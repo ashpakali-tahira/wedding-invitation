@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makandar Family Wedding Invitation | Ashpakali & Tahira</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cinzel+Decorative:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- QRCode.js for 100% Real Scannable Venue QR Codes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        palace: {
+                            emerald: '#062317',
+                            deep: '#03120b',
+                            jade: '#0b3b27',
+                            gold: '#d4af37',
+                            goldLight: '#fbe8a6',
+                            goldDark: '#8c6914',
+                            ivory: '#fdfaf3',
+                            parchment: '#f6eedc',
+                            sand: '#e8dec8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        display: ['"Cinzel Decorative"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['"Amiri"', 'serif'],
+                        script: ['"Great Vibes"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background-color: #03120b;
+            color: #fdfaf3;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        body.doors-locked {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* =========================================================
+           1. SUPER-REALISTIC 3D PALACE DOORS (STRICTLY ZERO TEXT)
+           ========================================================= */
+        #door-scene-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: radial-gradient(circle at 50% 45%, #1d140b 0%, #090603 70%, #020100 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 2400px;
+            overflow: hidden;
+            transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.1s;
+            cursor: pointer;
+        }
+        #door-scene-overlay.opened-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            display: none !important;
+        }
+        *::before, *::after {
+            pointer-events: none;
+        }
+
+        /* Architectural Stone & Gold Archway Surround */
+        .archway-surround {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                radial-gradient(circle at 50% 18%, rgba(255, 212, 118, 0.18) 0%, transparent 58%),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.014) 0px, rgba(255,255,255,0.014) 2px, transparent 2px, transparent 14px),
+                linear-gradient(180deg, #140f0a 0%, #241a10 45%, #0e0a06 100%);
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.95);
+            transform-style: preserve-3d;
+            transition: transform 2.1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        #door-scene-overlay.opening .archway-surround {
+            transform: scale(1.36) translateZ(260px);
+        }
+
+        /* Warm Golden Palace Interior Light Behind Doors */
+        .interior-light-glow {
+            position: absolute;
+            width: min(88vw, 660px);
+            height: min(92vh, 920px);
+            border-radius: 330px 330px 8px 8px;
+            background: radial-gradient(circle at 50% 45%, #fffdf0 0%, #fce088 34%, #d4941c 68%, #3d2204 100%);
+            box-shadow: 
+                0 0 90px 25px rgba(255, 215, 100, 0.45),
+                inset 0 0 80px rgba(255, 255, 255, 0.85);
+            opacity: 0.28;
+            transition: opacity 1.5s ease, transform 1.9s ease, box-shadow 1.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        #door-scene-overlay.opening .interior-light-glow {
+            opacity: 1;
+            transform: scale(1.16);
+            box-shadow: 0 0 240px 100px rgba(255, 226, 136, 0.96);
+        }
+
+        /* Carved Arch Frame */
+        .door-frame-arch {
+            position: relative;
+            width: min(88vw, 660px);
+            height: min(92vh, 920px);
+            border-radius: 330px 330px 6px 6px;
+            padding: 16px 16px 0 16px;
+            background: linear-gradient(135deg, #5c431c 0%, #cfa446 25%, #3d2b10 50%, #e6c065 75%, #3b280d 100%);
+            box-shadow: 
+                0 25px 85px rgba(0,0,0,0.96),
+                0 0 0 12px #1a1209,
+                0 0 0 16px #63491f,
+                inset 0 8px 25px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            transform-style: preserve-3d;
+            z-index: 5;
+        }
+
+        .door-jamb-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 314px 314px 2px 2px;
+            box-shadow: inset 0 15px 45px rgba(0,0,0,0.95);
+            display: flex;
+            transform-style: preserve-3d;
+            perspective: 2200px;
+        }
+
+        /* Center Light Seam & Subtle Golden Handle Halo (No Text) */
+        .center-light-seam {
+            position: absolute;
+            top: 2%;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 232, 150, 0.95) 20%, #fff9db 50%, rgba(255, 232, 150, 0.95) 80%, transparent 100%);
+            box-shadow: 0 0 20px 5px rgba(255, 214, 98, 0.8);
+            z-index: 15;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        #door-scene-overlay.opening .center-light-seam {
+            opacity: 0;
+        }
+
+        /* Subtle Non-Text Glowing Golden Halo Around Center Knockers */
+        .handle-touch-halo {
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 225, 125, 0.32) 0%, rgba(212, 175, 55, 0.12) 45%, transparent 72%);
+            box-shadow: 0 0 35px rgba(255, 215, 90, 0.35);
+            z-index: 22;
+            pointer-events: none;
+            animation: haloBreathe 2.6s infinite ease-in-out;
+            transition: opacity 0.4s ease;
+        }
+        #door-scene-overlay.opening .handle-touch-halo {
+            opacity: 0;
+        }
+        @keyframes haloBreathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.65; }
+            50% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+        }
+
+        /* Individual 3D Wooden Door Leaf */
+        .palace-door-leaf {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1.85s cubic-bezier(0.32, 0.04, 0.18, 1);
+            background-color: #2b1508;
+            background-image: 
+                radial-gradient(ellipse at 50% 35%, rgba(255, 198, 115, 0.15) 0%, rgba(0,0,0,0.58) 85%),
+                repeating-linear-gradient(90deg, 
+                    rgba(18, 7, 2, 0.34) 0px, 
+                    rgba(18, 7, 2, 0.34) 2px, 
+                    rgba(78, 37, 14, 0.2) 2px, 
+                    rgba(78, 37, 14, 0.2) 5px, 
+                    rgba(35, 15, 5, 0.3) 5px, 
+                    rgba(35, 15, 5, 0.3) 9px
+                ),
+                repeating-linear-gradient(178deg, 
+                    rgba(12, 4, 1, 0.35) 0px, 
+                    transparent 18px, 
+                    rgba(95, 48, 17, 0.22) 36px, 
+                    rgba(15, 5, 1, 0.4) 54px
+                ),
+                linear-gradient(180deg, #241005 0%, #3e1e0b 32%, #2a1306 68%, #180902 100%);
+            box-shadow: 
+                inset 0 0 35px rgba(0,0,0,0.92),
+                0 15px 40px rgba(0,0,0,0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 17% 9% 6% 9%;
+            overflow: hidden;
+        }
+
+        .palace-door-left {
+            border-top-left-radius: 312px;
+            transform-origin: left center;
+            border-right: 2px solid #120702;
+            border-left: 4px solid #7c5b24;
+            box-shadow: 
+                inset -6px 0 15px rgba(0,0,0,0.85),
+                inset 4px 0 12px rgba(255, 215, 120, 0.2);
+        }
+
+        .palace-door-right {
+            border-top-right-radius: 312px;
+            transform-origin: right center;
+            border-left: 2px solid #593e16;
+            border-right: 4px solid #7c5b24;
+            box-shadow: 
+                inset 6px 0 15px rgba(0,0,0,0.85),
+                inset -4px 0 12px rgba(255, 215, 120, 0.2);
+        }
+
+        /* 3D Door Edge Thickness */
+        .palace-door-left::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -18px;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(180deg, #3a200e, #1d0e05, #472812);
+            transform: rotateY(90deg);
+            transform-origin: left center;
+        }
+        .palace-door-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -18px;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(180deg, #3a200e, #1d0e05, #472812);
+            transform: rotateY(-90deg);
+            transform-origin: right center;
+        }
+
+        /* Triggered 3D Open State */
+        #door-scene-overlay.opening .palace-door-left {
+            transform: rotateY(-115deg);
+            box-shadow: 35px 0 70px rgba(0,0,0,0.85);
+        }
+        #door-scene-overlay.opening .palace-door-right {
+            transform: rotateY(115deg);
+            box-shadow: -35px 0 70px rgba(0,0,0,0.85);
+        }
+
+        /* Recessed Carved Wooden Panels inside each Door */
+        .door-carved-panel {
+            position: relative;
+            width: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(76, 38, 15, 0.68) 0%, rgba(20, 8, 2, 0.95) 100%);
+            border: 3px solid #96722f;
+            outline: 2px solid #1a0b03;
+            box-shadow: 
+                inset 0 6px 18px rgba(0,0,0,0.95),
+                inset 0 -3px 10px rgba(212, 175, 55, 0.28),
+                0 3px 6px rgba(0,0,0,0.85),
+                0 0 0 5px #231006,
+                0 0 0 7px rgba(196, 153, 67, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .panel-arch-top {
+            height: 28%;
+            border-radius: 140px 140px 6px 6px;
+        }
+        .panel-middle-main {
+            height: 41%;
+            border-radius: 8px;
+        }
+        .panel-bottom-base {
+            height: 22%;
+            border-radius: 6px;
+        }
+
+        /* Metallic Brass Stud Strips */
+        .brass-stud-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2px 4px;
+            height: 16px;
+        }
+        .brass-stud {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 30%, #fff8d6 0%, #e0b64c 35%, #8a6214 75%, #2b1b03 100%);
+            box-shadow: 
+                0 3px 5px rgba(0,0,0,0.9),
+                inset 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* Realistic 3D Sculpted Gold Ring Knockers */
+        .knocker-assembly {
+            position: absolute;
+            top: 51%;
+            z-index: 25;
+            width: 64px;
+            height: 88px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateZ(14px);
+            filter: drop-shadow(0 12px 10px rgba(0,0,0,0.85));
+        }
+        .knocker-left { right: 10%; }
+        .knocker-right { left: 10%; }
+        .knocker-backplate {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: conic-gradient(from 45deg, #6e4e11, #f3d27a, #8a6418, #fff1ba, #704f10, #d4a843, #6e4e11);
+            border: 2px solid #fffae0;
+            box-shadow: 
+                inset 0 0 10px rgba(0,0,0,0.8),
+                0 4px 10px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .knocker-pivot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #ffd86b 45%, #75510c 90%);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+        }
+        .knocker-ring {
+            margin-top: -11px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            background: 
+                linear-gradient(#2c1609, #2c1609) padding-box,
+                linear-gradient(145deg, #fff5c0 0%, #d4af37 35%, #6b4c0e 70%, #f5d77f 100%) border-box;
+            box-shadow: 
+                0 10px 14px rgba(0,0,0,0.85),
+                inset 0 3px 6px rgba(0,0,0,0.75);
+            animation: knockerGleam 2.8s infinite ease-in-out;
+            transform-origin: top center;
+        }
+        @keyframes knockerGleam {
+            0%, 100% {
+                transform: rotateX(0deg);
+                filter: drop-shadow(0 0 6px rgba(255, 215, 90, 0.4));
+            }
+            50% {
+                transform: rotateX(14deg);
+                filter: drop-shadow(0 0 18px rgba(255, 225, 120, 0.95));
+            }
+        }
+
+        /* =========================================================
+           2. CLASSIC ROYAL EMERALD, GOLD & PARCHMENT STYLING
+           ========================================================= */
+        .arabesque-bg {
+            background-color: #03120b;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 62%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.6' stroke-opacity='0.11'%3E%3Cpath d='M40 0L50 30L80 40L50 50L40 80L30 50L0 40L30 30Z'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3Cpath d='M0 0L20 20M80 0L60 20M0 80L20 60M80 80L60 60'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Shimmering Gold Foil Text */
+        .gold-foil-text {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #d4af37 50%, #fbf5b7 75%, #9b6c15 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: foilShine 6s linear infinite;
+        }
+        @keyframes foilShine {
+            to { background-position: 200% center; }
+        }
+
+        /* Deep Emerald & Gold Royal Card */
+        .gold-border-card {
+            background: linear-gradient(160deg, rgba(8, 41, 27, 0.94) 0%, rgba(3, 18, 11, 0.98) 100%);
+            border: 1.5px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.75),
+                inset 0 0 28px rgba(212, 175, 55, 0.07);
+        }
+
+        /* Dark Royal Emerald & Liquid Gold Palace Mihrab Invitation Card (No White!) */
+        .emerald-royal-mihrab-card {
+            background: 
+                radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.20) 0%, transparent 55%),
+                radial-gradient(circle at 50% 82%, rgba(212, 175, 55, 0.14) 0%, transparent 55%),
+                linear-gradient(165deg, #072a1e 0%, #041b12 48%, #02100a 100%);
+            color: #fdfaf3;
+            border: 2.5px solid #d4af37;
+            box-shadow: 
+                0 28px 75px rgba(0, 0, 0, 0.92),
+                0 0 0 6px #03120b,
+                0 0 0 8px rgba(212, 175, 55, 0.55),
+                inset 0 0 55px rgba(212, 175, 55, 0.12);
+            position: relative;
+        }
+        .emerald-royal-mihrab-card::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(251, 232, 166, 0.32);
+            border-radius: 18px;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.5' stroke-opacity='0.08'%3E%3Cpolygon points='50,5 62,38 95,50 62,62 50,95 38,62 5,50 38,38'/%3E%3Ccircle cx='50' cy='50' r='24'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Majestic Royal Capital Name Typography */
+        .royal-couple-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(180deg, #fff9d6 0%, #fbe8a6 30%, #d4af37 65%, #9e7313 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.32));
+        }
+        .royal-drop-cap {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-style: normal;
+            display: inline-block;
+            background: linear-gradient(135deg, #fffbe0 0%, #fbe8a6 35%, #d4af37 70%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 3px 10px rgba(212, 175, 55, 0.5));
+        }
+
+        /* Rotating Mandala Ring in Monogram */
+        .spin-slow {
+            animation: spinMandala 28s linear infinite;
+            transform-origin: center;
+        }
+        @keyframes spinMandala {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Gold Dust Canvas */
+        #gold-dust-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+        }
+
+        /* Custom Scrollbar for Blessings Wall */
+        .blessings-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .blessings-scroll::-webkit-scrollbar-track {
+            background: rgba(3, 18, 11, 0.6);
+            border-radius: 8px;
+        }
+        .blessings-scroll::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="doors-locked arabesque-bg font-sans selection:bg-palace-gold selection:text-palace-deep">
+
+    <!-- =====================================================================
+         1. HYPER-REALISTIC 3D DOUBLE DOOR ENTRANCE (STRICTLY ZERO TEXT)
+         ===================================================================== -->
+    <div id="door-scene-overlay" onclick="openPalaceDoors()" role="button" aria-label="Open Royal Palace Doors" tabindex="0">
+        <div class="archway-surround">
+            <!-- Warm Golden Palace Glow Behind the Doors -->
+            <div class="interior-light-glow"></div>
+
+            <!-- Carved Archway Frame -->
+            <div class="door-frame-arch">
+                <div class="door-jamb-inner">
+                    
+                    <!-- Warm Light Seam & Subtle Golden Halo Around Handles (Zero Text) -->
+                    <div class="center-light-seam"></div>
+                    <div class="handle-touch-halo"></div>
+
+                    <!-- LEFT 3D PALACE DOOR -->
+                    <div class="palace-door-leaf palace-door-left">
+                        <div class="door-carved-panel panel-arch-top">
+                            <svg class="w-4/5 h-4/5 opacity-90" viewBox="0 0 200 200">
+                                <defs>
+                                    <linearGradient id="goldCarveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#fbe8a6"/>
+                                        <stop offset="50%" stop-color="#d4af37"/>
+                                        <stop offset="100%" stop-color="#75530d"/>
+                                    </linearGradient>
+                                </defs>
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.5">
+                                    <circle cx="100" cy="115" r="58"/>
+                                    <circle cx="100" cy="115" r="44"/>
+                                    <polygon points="100,57 115,98 158,115 115,132 100,173 85,132 42,115 85,98" fill="rgba(212,175,55,0.14)"/>
+                                    <polygon points="100,57 115,98 158,115 115,132 100,173 85,132 42,115 85,98" transform="rotate(45 100 115)" fill="rgba(212,175,55,0.09)"/>
+                                    <circle cx="100" cy="115" r="14" fill="url(#goldCarveGrad)"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="brass-stud-row">
+                            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+                        </div>
+
+                        <div class="door-carved-panel panel-middle-main">
+                            <svg class="w-11/12 h-11/12 opacity-90" viewBox="0 0 240 320">
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.2">
+                                    <rect x="14" y="14" width="212" height="292" rx="8" stroke-width="1.5"/>
+                                    <path d="M14 55 A40 40 0 0 0 55 14 M185 14 A40 40 0 0 0 226 55 M14 265 A40 40 0 0 1 55 306 M185 306 A40 40 0 0 1 226 265"/>
+                                    <rect x="65" y="105" width="110" height="110" fill="rgba(212,175,55,0.08)" stroke-width="3"/>
+                                    <rect x="65" y="105" width="110" height="110" transform="rotate(45 120 160)" fill="rgba(212,175,55,0.12)" stroke-width="3"/>
+                                    <circle cx="120" cy="160" r="32" stroke-width="2.5"/>
+                                    <circle cx="120" cy="160" r="12" fill="url(#goldCarveGrad)"/>
+                                    <path d="M120 32 L135 62 L120 82 L105 62 Z" fill="rgba(212,175,55,0.22)"/>
+                                    <path d="M120 288 L135 258 L120 238 L105 258 Z" fill="rgba(212,175,55,0.22)"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Left 3D Gold Ring Knocker -->
+                        <div class="knocker-assembly knocker-left">
+                            <div class="knocker-backplate"><div class="knocker-pivot"></div></div>
+                            <div class="knocker-ring"></div>
+                        </div>
+
+                        <div class="brass-stud-row">
+                            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+                        </div>
+
+                        <div class="door-carved-panel panel-bottom-base">
+                            <svg class="w-4/5 h-4/5 opacity-85" viewBox="0 0 200 140">
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.2">
+                                    <rect x="12" y="12" width="176" height="116" rx="4"/>
+                                    <polygon points="100,24 162,70 100,116 38,70" fill="rgba(212,175,55,0.1)"/>
+                                    <circle cx="100" cy="70" r="18" fill="rgba(212,175,55,0.25)"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT 3D PALACE DOOR -->
+                    <div class="palace-door-leaf palace-door-right">
+                        <div class="door-carved-panel panel-arch-top">
+                            <svg class="w-4/5 h-4/5 opacity-90" viewBox="0 0 200 200">
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.5">
+                                    <circle cx="100" cy="115" r="58"/>
+                                    <circle cx="100" cy="115" r="44"/>
+                                    <polygon points="100,57 115,98 158,115 115,132 100,173 85,132 42,115 85,98" fill="rgba(212,175,55,0.14)"/>
+                                    <polygon points="100,57 115,98 158,115 115,132 100,173 85,132 42,115 85,98" transform="rotate(45 100 115)" fill="rgba(212,175,55,0.09)"/>
+                                    <circle cx="100" cy="115" r="14" fill="url(#goldCarveGrad)"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div class="brass-stud-row">
+                            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+                        </div>
+
+                        <div class="door-carved-panel panel-middle-main">
+                            <svg class="w-11/12 h-11/12 opacity-90" viewBox="0 0 240 320">
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.2">
+                                    <rect x="14" y="14" width="212" height="292" rx="8" stroke-width="1.5"/>
+                                    <path d="M14 55 A40 40 0 0 0 55 14 M185 14 A40 40 0 0 0 226 55 M14 265 A40 40 0 0 1 55 306 M185 306 A40 40 0 0 1 226 265"/>
+                                    <rect x="65" y="105" width="110" height="110" fill="rgba(212,175,55,0.08)" stroke-width="3"/>
+                                    <rect x="65" y="105" width="110" height="110" transform="rotate(45 120 160)" fill="rgba(212,175,55,0.12)" stroke-width="3"/>
+                                    <circle cx="120" cy="160" r="32" stroke-width="2.5"/>
+                                    <circle cx="120" cy="160" r="12" fill="url(#goldCarveGrad)"/>
+                                    <path d="M120 32 L135 62 L120 82 L105 62 Z" fill="rgba(212,175,55,0.22)"/>
+                                    <path d="M120 288 L135 258 L120 238 L105 258 Z" fill="rgba(212,175,55,0.22)"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- Right 3D Gold Ring Knocker -->
+                        <div class="knocker-assembly knocker-right">
+                            <div class="knocker-backplate"><div class="knocker-pivot"></div></div>
+                            <div class="knocker-ring"></div>
+                        </div>
+
+                        <div class="brass-stud-row">
+                            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+                        </div>
+
+                        <div class="door-carved-panel panel-bottom-base">
+                            <svg class="w-4/5 h-4/5 opacity-85" viewBox="0 0 200 140">
+                                <g fill="none" stroke="url(#goldCarveGrad)" stroke-width="2.2">
+                                    <rect x="12" y="12" width="176" height="116" rx="4"/>
+                                    <polygon points="100,24 162,70 100,116 38,70" fill="rgba(212,175,55,0.1)"/>
+                                    <circle cx="100" cy="70" r="18" fill="rgba(212,175,55,0.25)"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         FLOATING GOLDEN DUST CANVAS & TOP NAVIGATION / AUDIO CONTROLS
+         ===================================================================== -->
+    <canvas id="gold-dust-canvas"></canvas>
+
+    <nav class="sticky top-0 z-40 bg-palace-deep/90 backdrop-blur-md border-b border-palace-gold/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Left Brand Emblem -->
+                <a href="#top-crest" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 shadow-md group-hover:scale-105 transition">
+                        <svg viewBox="0 0 100 100" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="47" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-dasharray="1.5 3"/>
+                            <circle cx="50" cy="50" r="41" fill="#0b3b27" stroke="#d4af37" stroke-width="2"/>
+                            <circle cx="43" cy="31" r="7.5" fill="#fbe8a6"/>
+                            <circle cx="46.5" cy="29" r="7.5" fill="#0b3b27"/>
+                            <path d="M57 24.5 L58.6 28.5 L62.8 28.9 L59.6 31.6 L60.6 35.7 L57 33.5 L53.4 35.7 L54.4 31.6 L51.2 28.9 L55.4 28.5 Z" fill="#d4af37"/>
+                            <text x="50" y="68" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="30" fill="#fbe8a6">A&amp;T</text>
+                        </svg>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="block font-display text-sm font-bold gold-foil-text tracking-wider">ASHPAKALI &amp; TAHIRA</span>
+                        <span class="block text-[10px] uppercase tracking-[0.25em] text-palace-sand/75">21 &amp; 22 Nov 2026</span>
+                    </div>
+                </a>
+
+                <!-- Center Quick Links -->
+                <div class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-widest text-palace-sand font-medium">
+                    <a href="#invitation-card" class="hover:text-palace-gold transition">Invitation</a>
+                    <a href="#countdown-box" class="hover:text-palace-gold transition">Countdown</a>
+                    <a href="#events-scanners" class="hover:text-palace-gold transition">Venues &amp; QR</a>
+                    <a href="#little-invite" class="hover:text-palace-gold transition">Little Invite</a>
+                    <a href="#blessings-wall" class="hover:text-palace-gold transition">Duas &amp; Wishes</a>
+                </div>
+
+                <!-- Right Floating Audio Mute Toggle & Replay Doors -->
+                <div class="flex items-center space-x-2.5">
+                    <button id="share-invite-btn" onclick="shareInvitation()" class="flex items-center space-x-2 px-3.5 py-2 rounded-full border border-palace-gold/70 bg-palace-emerald text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs font-semibold transition shadow-lg" title="Share this invitation">
+                        <i class="fas fa-share-alt"></i>
+                        <span class="hidden sm:inline">Share</span>
+                    </button>
+                    <button id="audio-toggle-btn" onclick="toggleRoyalAudio()" class="flex items-center space-x-2 px-3.5 py-2 rounded-full border border-palace-gold/70 bg-palace-emerald text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs font-semibold transition shadow-lg" title="Mute / Unmute Royal Chimes">
+                        <i id="audio-toggle-icon" class="fas fa-volume-up"></i>
+                        <span id="audio-toggle-text" class="hidden sm:inline">Sound On</span>
+                    </button>
+
+                    <button onclick="replayPalaceDoors()" class="flex items-center space-x-1.5 px-3.5 py-2 rounded-full border border-palace-gold/50 bg-palace-deep/90 text-palace-sand hover:border-palace-gold hover:text-palace-goldLight text-xs font-medium transition shadow-lg" title="Replay 3D Door Opening">
+                        <i class="fas fa-door-open text-palace-gold"></i>
+                        <span class="hidden sm:inline">Replay Doors</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =====================================================================
+         MAIN ROYAL WEDDING INVITATION CONTENT
+         ===================================================================== -->
+    <main class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-24">
+
+        <!-- 3. TOP HEADER LOGO & ROYAL CREST ("HEADS LOGO") -->
+        <section id="top-crest" class="text-center mb-10">
+            
+            <!-- Ornate Islamic Arch Dome & Bismillah Header Banner (Recreated from Card Top) -->
+            <div class="max-w-3xl mx-auto mb-6">
+                <svg class="w-full max-w-xl mx-auto h-auto drop-shadow-[0_6px_18px_rgba(212,175,55,0.3)]" viewBox="0 0 700 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="crestGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#9b7219"/>
+                            <stop offset="25%" stop-color="#fbe8a6"/>
+                            <stop offset="50%" stop-color="#d4af37"/>
+                            <stop offset="75%" stop-color="#fbe8a6"/>
+                            <stop offset="100%" stop-color="#9b7219"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Left & Right Double Rules -->
+                    <line x1="20" y1="88" x2="250" y2="88" stroke="url(#crestGold)" stroke-width="2"/>
+                    <line x1="20" y1="126" x2="265" y2="126" stroke="url(#crestGold)" stroke-width="2"/>
+                    <line x1="450" y1="88" x2="680" y2="88" stroke="url(#crestGold)" stroke-width="2"/>
+                    <line x1="435" y1="126" x2="680" y2="126" stroke="url(#crestGold)" stroke-width="2"/>
+
+                    <!-- Center Ornate Mughal Dome Arch -->
+                    <path d="M250 88 C265 88, 280 50, 315 35 C335 26, 345 15, 350 6 C355 15, 365 26, 385 35 C420 50, 435 88, 450 88" stroke="url(#crestGold)" stroke-width="3" fill="rgba(11, 59, 39, 0.75)"/>
+                    <path d="M265 126 C285 146, 415 146, 435 126" stroke="url(#crestGold)" stroke-width="2.2" fill="none"/>
+                    <!-- Finial Spire & Crescent -->
+                    <circle cx="350" cy="6" r="3.5" fill="#fbe8a6"/>
+                    <!-- Decorative Side Scroll Flourishes -->
+                    <circle cx="285" cy="62" r="4" fill="url(#crestGold)"/>
+                    <circle cx="415" cy="62" r="4" fill="url(#crestGold)"/>
+
+                    <!-- Arabic Bismillah Inside Dome -->
+                    <text x="350" y="62" text-anchor="middle" fill="#fbe8a6" font-family="'Amiri', serif" font-size="25" font-weight="bold">﷽</text>
+
+                    <!-- Card Header Text -->
+                    <text x="135" y="112" text-anchor="middle" fill="#fdfaf3" font-family="'Plus Jakarta Sans', sans-serif" font-size="12.5" font-weight="600" letter-spacing="2">THE MOST BENEFICENT</text>
+                    <text x="350" y="86" text-anchor="middle" fill="#fbe8a6" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" letter-spacing="1.8">IN</text>
+                    <text x="350" y="102" text-anchor="middle" fill="#fbe8a6" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" letter-spacing="1.8">THE NAME OF</text>
+                    <text x="350" y="122" text-anchor="middle" fill="#d4af37" font-family="'Cinzel Decorative', serif" font-size="18" font-weight="900" letter-spacing="2.5">ALLAH</text>
+                    <text x="565" y="112" text-anchor="middle" fill="#fdfaf3" font-family="'Plus Jakarta Sans', sans-serif" font-size="12.5" font-weight="600" letter-spacing="2">THE MOST MERCIFUL</text>
+                </svg>
+            </div>
+
+            <!-- Circular Royal Monogram Crest (Inspired by Front Cover Circle of Makandar Family Card) -->
+            <div class="relative inline-flex flex-col items-center justify-center my-2">
+                <div class="relative w-36 h-36 sm:w-44 sm:h-44 flex items-center justify-center">
+                    <!-- Outer Slowly Rotating Mandala Ring -->
+                    <svg class="absolute inset-0 w-full h-full spin-slow" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fbe8a6"/>
+                                <stop offset="50%" stop-color="#d4af37"/>
+                                <stop offset="100%" stop-color="#8c6914"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="92" fill="none" stroke="url(#ringGrad)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                        <circle cx="100" cy="100" r="84" fill="none" stroke="url(#ringGrad)" stroke-width="2.2"/>
+                        <!-- 8-Pointed Star Mandala Petals -->
+                        <g stroke="url(#ringGrad)" stroke-width="1.4" fill="rgba(212, 175, 55, 0.07)">
+                            <rect x="42" y="42" width="116" height="116" rx="12"/>
+                            <rect x="42" y="42" width="116" height="116" rx="12" transform="rotate(45 100 100)"/>
+                        </g>
+                    </svg>
+                    <!-- Inner Stationary Royal Monogram Shield -->
+                    <div class="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold flex flex-col items-center justify-center shadow-[0_0_25px_rgba(212,175,55,0.35)]">
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-palace-gold/90">Makandar</span>
+                        <span class="font-script text-3xl sm:text-4xl gold-foil-text leading-none my-0.5">A &amp; T</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-palace-sand/80">21.11.2026</span>
+                    </div>
+                </div>
+                <p class="font-serif uppercase tracking-[0.3em] text-xs sm:text-sm text-palace-goldLight mt-2">
+                    Makandar Family Wedding Invitation
+                </p>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             4. DARK ROYAL EMERALD & LIQUID GOLD PALACE INVITATION CARD
+             ===================================================================== -->
+        <section id="invitation-card" class="mb-14">
+            <div class="emerald-royal-mihrab-card rounded-3xl p-6 sm:p-12 md:p-14 text-center overflow-hidden">
+                
+                <!-- Ornate Gold Corner Filigrees -->
+                <svg class="w-14 h-14 sm:w-20 sm:h-20 absolute top-4 left-4 text-palace-gold opacity-85 pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L65 0 C42 14, 14 42, 0 65 Z M10 10 L88 10 L88 14 L14 14 L14 88 L10 88 Z"/>
+                    <circle cx="24" cy="24" r="4"/>
+                </svg>
+                <svg class="w-14 h-14 sm:w-20 sm:h-20 absolute top-4 right-4 text-palace-gold opacity-85 pointer-events-none transform scale-x-[-1]" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L65 0 C42 14, 14 42, 0 65 Z M10 10 L88 10 L88 14 L14 14 L14 88 L10 88 Z"/>
+                    <circle cx="24" cy="24" r="4"/>
+                </svg>
+                <svg class="w-14 h-14 sm:w-20 sm:h-20 absolute bottom-4 left-4 text-palace-gold opacity-85 pointer-events-none transform scale-y-[-1]" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L65 0 C42 14, 14 42, 0 65 Z M10 10 L88 10 L88 14 L14 14 L14 88 L10 88 Z"/>
+                    <circle cx="24" cy="24" r="4"/>
+                </svg>
+                <svg class="w-14 h-14 sm:w-20 sm:h-20 absolute bottom-4 right-4 text-palace-gold opacity-85 pointer-events-none transform scale-[-1]" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M0 0 L65 0 C42 14, 14 42, 0 65 Z M10 10 L88 10 L88 14 L14 14 L14 88 L10 88 Z"/>
+                    <circle cx="24" cy="24" r="4"/>
+                </svg>
+
+                <!-- Creative Royal Ornamental Family Header -->
+                <div class="max-w-2xl mx-auto mb-8 relative z-10">
+                    <!-- Delicate Gold Arch & Star Flourish -->
+                    <div class="flex items-center justify-center mb-4">
+                        <svg class="w-48 sm:w-60 h-auto" viewBox="0 0 260 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 21 H95 M165 21 H250" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M35 15 H90 M170 15 H225" stroke="#fbe8a6" stroke-width="1" stroke-opacity="0.7" stroke-linecap="round"/>
+                            <polygon points="130,3 136,15 148,21 136,27 130,39 124,27 112,21 124,15" fill="#d4af37"/>
+                            <circle cx="104" cy="21" r="3" fill="#fbe8a6"/>
+                            <circle cx="156" cy="21" r="3" fill="#fbe8a6"/>
+                        </svg>
+                    </div>
+
+                    <!-- Sacred Quranic Verse Pill Badge -->
+                    <div class="inline-flex items-center justify-center px-5 sm:px-7 py-2 rounded-full bg-palace-deep/90 border border-palace-gold/80 shadow-[0_0_20px_rgba(212,175,55,0.25)] mb-5">
+                        <span class="font-serif italic text-xs sm:text-base text-palace-goldLight tracking-wide">
+                            “And We created you in pairs” — <span class="not-italic font-semibold text-palace-gold">Holy Quran (78:8)</span>
+                        </span>
+                    </div>
+
+                    <p class="font-serif italic font-semibold text-base sm:text-xl text-palace-goldLight tracking-wide">
+                        With the Infinite Blessings of Almighty Allah
+                    </p>
+
+                    <h2 class="font-display font-bold text-2xl sm:text-4xl gold-foil-text tracking-wider mt-1.5 mb-3">
+                        The Makandar Family <span class="font-serif italic font-semibold text-xl sm:text-3xl text-palace-goldLight block sm:inline mt-1 sm:mt-0">of Bailhongal</span>
+                    </h2>
+
+                    <p class="font-serif text-lg sm:text-2xl text-palace-sand/95 leading-relaxed">
+                        Cordially solicit your gracious presence and heartfelt duas with family &amp; friends on the auspicious occasion of the Wedding Ceremony of
+                    </p>
+                </div>
+
+                <!-- GRAND COUPLE SHOWCASE (ROYAL CAPITAL 'A' & 'T', NO DEGREE TAGS) -->
+                <div class="relative py-8 sm:py-10 my-4 border-y border-palace-gold/40 max-w-3xl mx-auto z-10 bg-palace-deep/45 rounded-2xl px-4">
+                    
+                    <!-- Left & Right Golden Arabesque Lanterns -->
+                    <div class="hidden md:flex flex-col items-center justify-center absolute left-5 top-1/2 -translate-y-1/2 opacity-80 text-palace-gold pointer-events-none">
+                        <svg width="54" height="90" viewBox="0 0 60 100" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M30 5 L42 25 L18 25 Z" fill="rgba(212,175,55,0.25)"/>
+                            <rect x="18" y="25" width="24" height="42" rx="4" fill="rgba(212,175,55,0.12)"/>
+                            <circle cx="30" cy="46" r="7" fill="#fbe8a6"/>
+                            <path d="M22 67 L38 67 L30 85 Z" fill="rgba(212,175,55,0.35)"/>
+                        </svg>
+                    </div>
+                    <div class="hidden md:flex flex-col items-center justify-center absolute right-5 top-1/2 -translate-y-1/2 opacity-80 text-palace-gold pointer-events-none">
+                        <svg width="54" height="90" viewBox="0 0 60 100" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M30 5 L42 25 L18 25 Z" fill="rgba(212,175,55,0.25)"/>
+                            <rect x="18" y="25" width="24" height="42" rx="4" fill="rgba(212,175,55,0.12)"/>
+                            <circle cx="30" cy="46" r="7" fill="#fbe8a6"/>
+                            <path d="M22 67 L38 67 L30 85 Z" fill="rgba(212,175,55,0.35)"/>
+                        </svg>
+                    </div>
+
+                    <!-- GROOM: ASHPAKALI (With Majestic Capital 'A' & No Suffix) -->
+                    <div class="mb-7">
+                        <div class="inline-flex items-baseline justify-center">
+                            <h1 class="royal-couple-name text-5xl sm:text-7xl md:text-8xl leading-none tracking-wide">
+                                <span class="royal-drop-cap text-6xl sm:text-8xl md:text-9xl mr-0.5">A</span>shpakali
+                            </h1>
+                        </div>
+                        <p class="font-serif font-medium text-base sm:text-xl text-palace-sand mt-3">
+                            (S/o. Mr. Hajaratsab H Makandar <span class="text-sm sm:text-base text-palace-goldLight">(Ex Army)</span> &amp;<br class="sm:hidden"> Smt. Fairoja Hajaratsab Makandar)
+                        </p>
+                    </div>
+
+                    <!-- Luxury 3D Gold Filigree Medallion "WEDS" Divider -->
+                    <div class="flex items-center justify-center my-6">
+                        <div class="flex flex-col space-y-1.5 w-20 sm:w-36 items-end pr-3">
+                            <span class="h-[1.5px] w-full bg-gradient-to-l from-palace-gold to-transparent"></span>
+                            <span class="h-[2px] w-3/4 bg-palace-goldLight"></span>
+                            <span class="h-[1.5px] w-full bg-gradient-to-l from-palace-gold to-transparent"></span>
+                        </div>
+                        
+                        <div class="relative flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                            <i class="fas fa-heart text-palace-gold text-xs mr-2"></i>
+                            <span class="font-display font-bold text-xs sm:text-sm tracking-[0.25em] text-palace-goldLight">WEDS</span>
+                            <i class="fas fa-heart text-palace-gold text-xs ml-2"></i>
+                        </div>
+
+                        <div class="flex flex-col space-y-1.5 w-20 sm:w-36 items-start pl-3">
+                            <span class="h-[1.5px] w-full bg-gradient-to-r from-palace-gold to-transparent"></span>
+                            <span class="h-[2px] w-3/4 bg-palace-goldLight"></span>
+                            <span class="h-[1.5px] w-full bg-gradient-to-r from-palace-gold to-transparent"></span>
+                        </div>
+                    </div>
+
+                    <!-- BRIDE: TAHIRA (With Majestic Capital 'T' & No Suffix) -->
+                    <div class="mt-7">
+                        <div class="inline-flex items-baseline justify-center">
+                            <h1 class="royal-couple-name text-5xl sm:text-7xl md:text-8xl leading-none tracking-wide">
+                                <span class="royal-drop-cap text-6xl sm:text-8xl md:text-9xl mr-0.5">T</span>ahira
+                            </h1>
+                        </div>
+                        <p class="font-serif font-medium text-base sm:text-xl text-palace-sand mt-3">
+                            (D/o Mr. Tanveer Ahammad Mulla of Dharwad)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dark Emerald Glass & Gold Quote Box (Matches Theme 100%) -->
+                <div class="max-w-lg mx-auto mt-8 pt-2 relative z-10">
+                    <div class="border-2 border-palace-gold/75 bg-gradient-to-b from-palace-deep/95 to-palace-emerald/90 rounded-2xl p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.7)] relative">
+                        <span class="w-2.5 h-2.5 rotate-45 bg-palace-gold absolute -top-1.5 -left-1.5"></span>
+                        <span class="w-2.5 h-2.5 rotate-45 bg-palace-gold absolute -top-1.5 -right-1.5"></span>
+                        <span class="w-2.5 h-2.5 rotate-45 bg-palace-gold absolute -bottom-1.5 -left-1.5"></span>
+                        <span class="w-2.5 h-2.5 rotate-45 bg-palace-gold absolute -bottom-1.5 -right-1.5"></span>
+
+                        <p class="font-serif italic text-lg sm:text-2xl text-palace-goldLight font-semibold border-b border-palace-gold/30 pb-2 mb-2">
+                            "Your names are in our Hearts"
+                        </p>
+                        <p class="font-serif italic text-base sm:text-xl text-palace-ivory border-b border-palace-gold/30 pb-2 mb-2">
+                            We Heartily welcome you with your
+                        </p>
+                        <p class="font-serif italic text-lg sm:text-2xl text-palace-gold font-semibold">
+                            Family to bless the couple
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. LIVE COUNTDOWN TO NIKAH (21 NOVEMBER 2026 AT 12:45 PM)
+             ===================================================================== -->
+        <section id="countdown-box" class="mb-16">
+            <div class="gold-border-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
+                <div class="flex items-center justify-center space-x-3 mb-2">
+                    <span class="h-px w-12 bg-palace-gold/60"></span>
+                    <span class="text-xs uppercase tracking-[0.3em] text-palace-gold font-semibold">Auspicious Moment</span>
+                    <span class="h-px w-12 bg-palace-gold/60"></span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-4xl font-bold gold-foil-text mb-2">
+                    Live Countdown to Insha Allah Nikah
+                </h3>
+                <p class="text-xs sm:text-sm text-palace-sand/80 mb-8">
+                    Saturday, 21st November 2026 at 12:45 PM • Dharwad
+                </p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
+                    <div class="bg-palace-deep/90 border-2 border-palace-gold/45 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <div id="cd-days" class="font-display text-4xl sm:text-6xl font-bold gold-foil-text">33</div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-palace-sand/90 mt-2">Days</div>
+                    </div>
+                    <div class="bg-palace-deep/90 border-2 border-palace-gold/45 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <div id="cd-hours" class="font-display text-4xl sm:text-6xl font-bold gold-foil-text">13</div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-palace-sand/90 mt-2">Hours</div>
+                    </div>
+                    <div class="bg-palace-deep/90 border-2 border-palace-gold/45 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <div id="cd-mins" class="font-display text-4xl sm:text-6xl font-bold gold-foil-text">45</div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-palace-sand/90 mt-2">Minutes</div>
+                    </div>
+                    <div class="bg-palace-deep/90 border-2 border-palace-gold/45 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <div id="cd-secs" class="font-display text-4xl sm:text-6xl font-bold text-palace-goldLight">00</div>
+                        <div class="text-xs uppercase tracking-[0.25em] text-palace-gold mt-2">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. EVENTS & WORKING QR LOCATION SCANNERS (NIKAH & VALIMA)
+             ===================================================================== -->
+        <section id="events-scanners" class="mb-16">
+            <div class="text-center mb-10">
+                <span class="text-xs uppercase tracking-[0.3em] text-palace-gold font-semibold">Ceremonies &amp; Navigation</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold gold-foil-text mt-1">Wedding Events &amp; Venue QR Scanners</h2>
+                <p class="text-palace-sand/80 text-sm sm:text-base max-w-2xl mx-auto mt-2">
+                    Scan the QR code with your phone camera or tap the map button for direct route navigation to Dharwad &amp; Bailhongal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- EVENT 1: INSHA ALLAH NIKAH (DHARWAD) -->
+                <div class="gold-border-card rounded-3xl p-6 sm:p-8 text-center flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-palace-goldDark via-palace-goldLight to-palace-goldDark"></div>
+                    
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-palace-gold/15 border border-palace-gold/40 text-palace-goldLight text-xs uppercase tracking-widest mb-4">
+                            <i class="fas fa-mosque"></i>
+                            <span>Ceremony 01 • Marriage</span>
+                        </div>
+
+                        <p class="font-serif italic text-xl text-palace-goldLight">Insha Allah</p>
+                        <h3 class="font-script text-5xl sm:text-6xl gold-foil-text mb-4">Nikah</h3>
+
+                        <!-- Date & Time Box -->
+                        <div class="bg-palace-deep/85 border-y-2 border-palace-gold/40 py-3.5 px-4 rounded-xl mb-5">
+                            <p class="font-serif text-xl sm:text-2xl font-bold text-palace-ivory">
+                                21<sup class="text-xs">st</sup> Saturday, November 2026
+                            </p>
+                            <p class="text-sm sm:text-base text-palace-goldLight font-medium mt-0.5">
+                                at 12:45 p.m.
+                            </p>
+                        </div>
+
+                        <!-- Venue Box -->
+                        <div class="mb-6">
+                            <p class="font-script text-3xl text-palace-gold mb-1">Venue</p>
+                            <p class="font-serif italic text-xl sm:text-2xl text-palace-ivory leading-relaxed">
+                                At City Paradise Hall<br>
+                                (Pathan Hall) Mallapur,<br>
+                                <span class="font-sans not-italic font-bold tracking-widest text-palace-goldLight text-lg">DHARWAD.</span>
+                            </p>
+                        </div>
+
+                        <!-- Real Scannable & Clickable QR Scanner Box -->
+                        <div onclick="openExternalMap(event, 'https://share.google/Q2lnQjRQZfQ4HuwBF')" role="button" tabindex="0" class="bg-[#fbf6e9] p-4 rounded-2xl inline-block shadow-2xl border-4 border-palace-gold mx-auto mb-5 hover:scale-105 transition duration-300 group cursor-pointer relative z-30" title="Tap or Scan to Open Nikah Venue Map">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&color=071f16&bgcolor=fbf6e9&data=https%3A%2F%2Fshare.google%2FQ2lnQjRQZfQ4HuwBF" alt="Nikah Venue QR Code" class="w-40 h-40 sm:w-44 sm:h-44 mx-auto rounded-lg" onerror="this.style.display='none'; document.getElementById('qrcode-nikah').classList.remove('hidden');" />
+                            <div id="qrcode-nikah" class="hidden flex items-center justify-center mx-auto"></div>
+                            <p class="text-[11px] font-bold tracking-widest uppercase text-palace-emerald mt-2.5 group-hover:text-[#8c6914] transition">
+                                <i class="fas fa-qrcode mr-1"></i> Scan or Tap for Nikah Map
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 space-y-2.5 relative z-30">
+                        <a href="https://share.google/Q2lnQjRQZfQ4HuwBF" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://share.google/Q2lnQjRQZfQ4HuwBF')" class="w-full py-3.5 px-6 rounded-xl bg-palace-gold text-palace-deep font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-palace-goldLight transition shadow-lg inline-flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fas fa-map-marked-alt text-base"></i>
+                            <span>Open Marriage Location Map</span>
+                        </a>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=City+Paradise+Hall+Pathan+Hall+Mallapur+Dharwad" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://www.google.com/maps/search/?api=1&query=City+Paradise+Hall+Pathan+Hall+Mallapur+Dharwad')" class="py-2.5 px-3 rounded-xl bg-palace-deep border border-palace-gold/50 hover:border-palace-goldLight text-palace-goldLight text-xs font-medium transition inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="fas fa-location-arrow text-palace-gold"></i>
+                                <span>Google Maps App</span>
+                            </a>
+                            <button type="button" onclick="copyTextWithToast('https://share.google/Q2lnQjRQZfQ4HuwBF', 'Marriage Map link copied!')" class="py-2.5 px-3 rounded-xl bg-palace-deep border border-palace-gold/50 hover:border-palace-goldLight text-palace-sand text-xs font-medium transition inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="fas fa-copy text-palace-gold"></i>
+                                <span>Copy Map Link</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENT 2: VALIMA / RECEPTION (BAILHONGAL) -->
+                <div class="gold-border-card rounded-3xl p-6 sm:p-8 text-center flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-palace-goldDark via-palace-goldLight to-palace-goldDark"></div>
+                    
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-palace-gold/15 border border-palace-gold/40 text-palace-goldLight text-xs uppercase tracking-widest mb-4">
+                            <i class="fas fa-gem"></i>
+                            <span>Ceremony 02 • Reception</span>
+                        </div>
+
+                        <p class="font-serif italic text-xl text-palace-goldLight">Auspicious</p>
+                        <h3 class="font-serif italic font-bold text-3xl sm:text-4xl gold-foil-text mb-4 py-1.5">
+                            * Valima / Reception *
+                        </h3>
+
+                        <!-- Date & Time Box -->
+                        <div class="bg-palace-deep/85 border-y-2 border-palace-gold/40 py-3.5 px-4 rounded-xl mb-5">
+                            <p class="font-serif text-xl sm:text-2xl font-bold text-palace-ivory">
+                                On Sunday, 22-11-2026
+                            </p>
+                            <p class="text-sm sm:text-base text-palace-goldLight font-medium mt-0.5">
+                                at 12:45 p.m.
+                            </p>
+                        </div>
+
+                        <!-- Venue Box -->
+                        <div class="mb-6">
+                            <p class="font-script text-3xl text-palace-gold mb-1">Venue</p>
+                            <p class="font-serif font-semibold text-xl sm:text-2xl text-palace-ivory leading-relaxed">
+                                At A.S. Gadag Function Hall,<br>
+                                Ashray Colony, Devalapur Road,<br>
+                                <span class="font-sans font-bold tracking-widest text-palace-goldLight text-lg">BAILHONGAL.</span>
+                            </p>
+                        </div>
+
+                        <!-- Real Scannable & Clickable QR Scanner Box -->
+                        <div onclick="openExternalMap(event, 'https://share.google/JvlYQfMulSFgQvgcu')" role="button" tabindex="0" class="bg-[#fbf6e9] p-4 rounded-2xl inline-block shadow-2xl border-4 border-palace-gold mx-auto mb-5 hover:scale-105 transition duration-300 group cursor-pointer relative z-30" title="Tap or Scan to Open Valima Venue Map">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&color=071f16&bgcolor=fbf6e9&data=https%3A%2F%2Fshare.google%2FJvlYQfMulSFgQvgcu" alt="Valima Venue QR Code" class="w-40 h-40 sm:w-44 sm:h-44 mx-auto rounded-lg" onerror="this.style.display='none'; document.getElementById('qrcode-valima').classList.remove('hidden');" />
+                            <div id="qrcode-valima" class="hidden flex items-center justify-center mx-auto"></div>
+                            <p class="text-[11px] font-bold tracking-widest uppercase text-palace-emerald mt-2.5 group-hover:text-[#8c6914] transition">
+                                <i class="fas fa-qrcode mr-1"></i> Scan or Tap for Valima Map
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 space-y-2.5 relative z-30">
+                        <a href="https://share.google/JvlYQfMulSFgQvgcu" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://share.google/JvlYQfMulSFgQvgcu')" class="w-full py-3.5 px-6 rounded-xl bg-palace-gold text-palace-deep font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-palace-goldLight transition shadow-lg inline-flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fas fa-map-marked-alt text-base"></i>
+                            <span>Open Reception Location Map</span>
+                        </a>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=A.S.+Gadag+Function+Hall+Ashray+Colony+Devalapur+Road+Bailhongal" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://www.google.com/maps/search/?api=1&query=A.S.+Gadag+Function+Hall+Ashray+Colony+Devalapur+Road+Bailhongal')" class="py-2.5 px-3 rounded-xl bg-palace-deep border border-palace-gold/50 hover:border-palace-goldLight text-palace-goldLight text-xs font-medium transition inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="fas fa-location-arrow text-palace-gold"></i>
+                                <span>Google Maps App</span>
+                            </a>
+                            <button type="button" onclick="copyTextWithToast('https://share.google/JvlYQfMulSFgQvgcu', 'Reception Map link copied!')" class="py-2.5 px-3 rounded-xl bg-palace-deep border border-palace-gold/50 hover:border-palace-goldLight text-palace-sand text-xs font-medium transition inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                                <i class="fas fa-copy text-palace-gold"></i>
+                                <span>Copy Map Link</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             7. UPGRADED MAGICAL "LITTLE INVITE" SECTION
+             ===================================================================== -->
+        <section id="little-invite" class="mb-16">
+            <div class="gold-border-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden border-2 border-palace-gold/60 shadow-[0_0_50px_rgba(212,175,55,0.18)]">
+                
+                <!-- Twinkling Corner Stars -->
+                <div class="flex justify-center items-center space-x-2 text-palace-gold mb-3">
+                    <i class="fas fa-star text-xs animate-pulse"></i>
+                    <i class="fas fa-moon text-lg text-palace-goldLight"></i>
+                    <span class="text-xs uppercase tracking-[0.3em] text-palace-goldLight font-semibold">Sweetest Welcome From Little Hearts</span>
+                    <i class="fas fa-moon text-lg text-palace-goldLight"></i>
+                    <i class="fas fa-star text-xs animate-pulse"></i>
+                </div>
+
+                <h2 class="font-script text-5xl sm:text-6xl gold-foil-text mb-3">
+                    ✨ Little Invite ✨
+                </h2>
+
+                <p class="font-serif italic text-lg sm:text-2xl text-palace-sand max-w-xl mx-auto mb-8">
+                    "Waiting to welcome you with big smiles, rose petals &amp; chocolates at our favourite wedding!"
+                </p>
+
+                <!-- 5 Decorative Royal Golden Lantern Badges for the Little Ones -->
+                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5 max-w-4xl mx-auto">
+                    
+                    <div class="group px-6 py-4 rounded-2xl bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold/60 hover:border-palace-goldLight shadow-xl flex items-center space-x-3 hover:-translate-y-1 transition duration-300">
+                        <span class="w-9 h-9 rounded-full bg-palace-gold/20 border border-palace-gold flex items-center justify-center text-palace-goldLight">
+                            <i class="fas fa-crown text-sm"></i>
+                        </span>
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-palace-ivory tracking-wide">Shah Faijal</span>
+                    </div>
+
+                    <div class="group px-6 py-4 rounded-2xl bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold/60 hover:border-palace-goldLight shadow-xl flex items-center space-x-3 hover:-translate-y-1 transition duration-300">
+                        <span class="w-9 h-9 rounded-full bg-palace-gold/20 border border-palace-gold flex items-center justify-center text-palace-goldLight">
+                            <i class="fas fa-star text-sm"></i>
+                        </span>
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-palace-ivory tracking-wide">Umme Aiza</span>
+                    </div>
+
+                    <div class="group px-6 py-4 rounded-2xl bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold/60 hover:border-palace-goldLight shadow-xl flex items-center space-x-3 hover:-translate-y-1 transition duration-300">
+                        <span class="w-9 h-9 rounded-full bg-palace-gold/20 border border-palace-gold flex items-center justify-center text-palace-goldLight">
+                            <i class="fas fa-heart text-sm"></i>
+                        </span>
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-palace-ivory tracking-wide">Zareen</span>
+                    </div>
+
+                    <div class="group px-6 py-4 rounded-2xl bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold/60 hover:border-palace-goldLight shadow-xl flex items-center space-x-3 hover:-translate-y-1 transition duration-300">
+                        <span class="w-9 h-9 rounded-full bg-palace-gold/20 border border-palace-gold flex items-center justify-center text-palace-goldLight">
+                            <i class="fas fa-gem text-sm"></i>
+                        </span>
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-palace-ivory tracking-wide">Abdul Wahab</span>
+                    </div>
+
+                    <div class="group px-6 py-4 rounded-2xl bg-gradient-to-b from-palace-emerald to-palace-deep border-2 border-palace-gold/60 hover:border-palace-goldLight shadow-xl flex items-center space-x-3 hover:-translate-y-1 transition duration-300">
+                        <span class="w-9 h-9 rounded-full bg-palace-gold/20 border border-palace-gold flex items-center justify-center text-palace-goldLight">
+                            <i class="fas fa-spa text-sm"></i>
+                        </span>
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-palace-ivory tracking-wide">Umme Hainifha</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             8. DUA, BLESSINGS & FEEDBACK WALL (REPLACING GUEST COUNT)
+             ===================================================================== -->
+        <section id="blessings-wall" class="mb-16">
+            <div class="text-center mb-10">
+                <span class="text-xs uppercase tracking-[0.3em] text-palace-gold font-semibold">Royal Guestbook &amp; Duas</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold gold-foil-text mt-1">Send Your Duas, Blessings &amp; Wishes</h2>
+                <p class="text-palace-sand/80 text-sm sm:text-base max-w-2xl mx-auto mt-2">
+                    Shower <strong class="text-palace-goldLight">Ashpakali &amp; Tahira</strong> with your heartfelt prayers, blessings, and warm wishes for their blessed journey ahead.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Form: Write a Dua / Blessing -->
+                <div class="lg:col-span-5 gold-border-card rounded-3xl p-6 sm:p-8">
+                    <h3 class="font-serif text-2xl font-bold text-palace-goldLight mb-4 flex items-center gap-2">
+                        <i class="fas fa-feather-alt text-palace-gold text-lg"></i>
+                        <span>Write a Blessing</span>
+                    </h3>
+
+                    <form id="blessing-form" onsubmit="submitGuestBlessing(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-palace-sand mb-1.5">Your Name / Family Name *</label>
+                            <input id="blessing-name" type="text" required placeholder="e.g., Mohammed Irfan & Family" class="w-full px-4 py-3 rounded-xl bg-palace-deep border border-palace-gold/45 text-sm text-palace-ivory focus:outline-none focus:border-palace-gold">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-palace-sand mb-1.5">Choose Blessing Tag</label>
+                            <select id="blessing-tag" class="w-full px-4 py-3 rounded-xl bg-palace-deep border border-palace-gold/45 text-sm text-palace-ivory focus:outline-none focus:border-palace-gold">
+                                <option value="Barakallahu Lakuma 🤲">Barakallahu Lakuma 🤲</option>
+                                <option value="Heartfelt Congratulations ✨">Heartfelt Congratulations ✨</option>
+                                <option value="Insha Allah Attending 🕌">Insha Allah Attending 🕌</option>
+                                <option value="Endless Love & Barakah 💖">Endless Love &amp; Barakah 💖</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-palace-sand mb-1.5">Your Dua / Feedback for the Couple *</label>
+                            <textarea id="blessing-message" rows="4" required placeholder="May Allah bless Ashpakali & Tahira with eternal happiness, love, and barakah..." class="w-full px-4 py-3 rounded-xl bg-palace-deep border border-palace-gold/45 text-sm text-palace-ivory focus:outline-none focus:border-palace-gold resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-palace-gold text-palace-deep font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-palace-goldLight transition shadow-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Post to Royal Blessings Wall</span>
+                        </button>
+                    </form>
+
+                    <div id="blessing-toast" class="hidden mt-4 p-3 rounded-xl bg-emerald-900/80 border border-palace-gold text-center text-xs text-palace-goldLight font-medium">
+                        <i class="fas fa-check-circle mr-1"></i> Jazakallah Khair! Your Dua has been added to the wall.
+                    </div>
+                </div>
+
+                <!-- Right Wall: Live Scrolling Royal Blessings Wall -->
+                <div class="lg:col-span-7 gold-border-card rounded-3xl p-6 sm:p-8">
+                    <div class="flex items-center justify-between border-b border-palace-gold/25 pb-4 mb-5">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-palace-goldLight">Royal Blessings Wall</h3>
+                            <p class="text-xs text-palace-sand/70">Live Duas &amp; Wishes from Family &amp; Friends</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="admin-manage-btn" onclick="toggleAdminManage()" class="px-3 py-1 rounded-full border border-palace-gold/40 text-palace-sand/70 hover:text-palace-goldLight hover:border-palace-gold text-[11px] font-medium transition" title="Couple-only: remove a dua">
+                                <i class="fas fa-lock mr-1"></i>Manage
+                            </button>
+                            <span id="blessing-badge-count" class="px-3 py-1 rounded-full bg-palace-gold/20 border border-palace-gold/40 text-palace-goldLight text-xs font-semibold">
+                                4 Duas
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="blessings-list" class="blessings-scroll space-y-4 max-h-[420px] overflow-y-auto pr-1">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             9. COMPLIMENTS & FOOTER CONTACT DETAILS (FROM CARD & COVER)
+             ===================================================================== -->
+        <footer class="gold-border-card rounded-3xl p-8 sm:p-12 text-center border-t-4 border-t-palace-gold">
+            
+            <!-- Arabic Dua for Newlyweds -->
+            <p class="font-arabic text-2xl sm:text-3xl text-palace-goldLight mb-2">
+                بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+            </p>
+            <p class="font-serif italic text-xs sm:text-sm text-palace-sand/80 max-w-xl mx-auto mb-8">
+                "May Allah bless you both, shower His blessings upon you, and join you together in goodness."
+            </p>
+
+            <!-- With Best Compliments From -->
+            <div class="max-w-2xl mx-auto py-6 border-y border-palace-gold/30 mb-8">
+                <p class="font-script text-3xl sm:text-4xl text-palace-gold mb-2">With Best Compliments From</p>
+                <p class="font-serif italic text-lg sm:text-2xl text-palace-ivory leading-relaxed">
+                    Bilal Masjid Jamat,<br>
+                    Makandar &amp; Otigeri Family<br>
+                    Relatives &amp; Friends
+                </p>
+            </div>
+
+            <!-- Sender Address & Click-to-Call Numbers (From Cover Card) -->
+            <div class="max-w-2xl mx-auto text-center space-y-2 relative z-30">
+                <p class="text-xs uppercase tracking-[0.25em] text-palace-gold font-semibold">From</p>
+                <h4 class="font-serif text-2xl sm:text-3xl font-bold text-palace-ivory">
+                    Mr. Hajaratsab H Makandar <span class="text-base font-normal text-palace-goldLight">(Ex Army)</span>
+                </h4>
+                <p class="font-sans text-sm sm:text-base text-palace-sand/90">
+                    1317/A/16/A10, Gundlur Chawl, 2<sup class="text-xs">nd</sup> Cross, <strong class="text-palace-goldLight">BAILHONGAL.</strong>
+                </p>
+
+                <!-- Multi-Action Phone Cards (Direct Call, WhatsApp & Copy) -->
+                <div class="pt-5">
+                    <p class="text-xs uppercase tracking-widest text-palace-goldLight mb-4">
+                        <i class="fas fa-phone-volume mr-1.5 text-palace-gold"></i> Instant Call, WhatsApp or Copy Number
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        
+                        <!-- Number 1 -->
+                        <div class="p-3.5 rounded-2xl bg-palace-deep/95 border border-palace-gold/50 flex items-center justify-between shadow-lg">
+                            <a href="tel:+919682149927" target="_top" onclick="triggerPhoneCall(event, '+919682149927')" class="font-sans font-bold text-sm sm:text-base text-palace-ivory hover:text-palace-goldLight flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-palace-gold"></i>
+                                <span>9682149927</span>
+                            </a>
+                            <div class="flex items-center space-x-1.5">
+                                <a href="tel:+919682149927" target="_top" onclick="triggerPhoneCall(event, '+919682149927')" class="px-3 py-1.5 rounded-lg bg-palace-gold text-palace-deep font-bold text-xs hover:bg-palace-goldLight transition">
+                                    Call
+                                </a>
+                                <a href="https://wa.me/919682149927" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://wa.me/919682149927')" class="p-1.5 px-2.5 rounded-lg bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs transition" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <button type="button" onclick="copyTextWithToast('9682149927', 'Number 9682149927 copied! Ready to dial.')" class="p-1.5 px-2.5 rounded-lg bg-palace-emerald border border-palace-gold/40 text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs transition" title="Copy Number">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Number 2 -->
+                        <div class="p-3.5 rounded-2xl bg-palace-deep/95 border border-palace-gold/50 flex items-center justify-between shadow-lg">
+                            <a href="tel:+918904164715" target="_top" onclick="triggerPhoneCall(event, '+918904164715')" class="font-sans font-bold text-sm sm:text-base text-palace-ivory hover:text-palace-goldLight flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-palace-gold"></i>
+                                <span>8904164715</span>
+                            </a>
+                            <div class="flex items-center space-x-1.5">
+                                <a href="tel:+918904164715" target="_top" onclick="triggerPhoneCall(event, '+918904164715')" class="px-3 py-1.5 rounded-lg bg-palace-gold text-palace-deep font-bold text-xs hover:bg-palace-goldLight transition">
+                                    Call
+                                </a>
+                                <a href="https://wa.me/918904164715" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://wa.me/918904164715')" class="p-1.5 px-2.5 rounded-lg bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs transition" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <button type="button" onclick="copyTextWithToast('8904164715', 'Number 8904164715 copied! Ready to dial.')" class="p-1.5 px-2.5 rounded-lg bg-palace-emerald border border-palace-gold/40 text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs transition" title="Copy Number">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Number 3 -->
+                        <div class="p-3.5 rounded-2xl bg-palace-deep/95 border border-palace-gold/50 flex items-center justify-between shadow-lg">
+                            <a href="tel:+919901259008" target="_top" onclick="triggerPhoneCall(event, '+919901259008')" class="font-sans font-bold text-sm sm:text-base text-palace-ivory hover:text-palace-goldLight flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-palace-gold"></i>
+                                <span>9901259008</span>
+                            </a>
+                            <div class="flex items-center space-x-1.5">
+                                <a href="tel:+919901259008" target="_top" onclick="triggerPhoneCall(event, '+919901259008')" class="px-3 py-1.5 rounded-lg bg-palace-gold text-palace-deep font-bold text-xs hover:bg-palace-goldLight transition">
+                                    Call
+                                </a>
+                                <a href="https://wa.me/919901259008" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://wa.me/919901259008')" class="p-1.5 px-2.5 rounded-lg bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs transition" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <button type="button" onclick="copyTextWithToast('9901259008', 'Number 9901259008 copied! Ready to dial.')" class="p-1.5 px-2.5 rounded-lg bg-palace-emerald border border-palace-gold/40 text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs transition" title="Copy Number">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Number 4 -->
+                        <div class="p-3.5 rounded-2xl bg-palace-deep/95 border border-palace-gold/50 flex items-center justify-between shadow-lg">
+                            <a href="tel:+917353490980" target="_top" onclick="triggerPhoneCall(event, '+917353490980')" class="font-sans font-bold text-sm sm:text-base text-palace-ivory hover:text-palace-goldLight flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-palace-gold"></i>
+                                <span>7353490980</span>
+                            </a>
+                            <div class="flex items-center space-x-1.5">
+                                <a href="tel:+917353490980" target="_top" onclick="triggerPhoneCall(event, '+917353490980')" class="px-3 py-1.5 rounded-lg bg-palace-gold text-palace-deep font-bold text-xs hover:bg-palace-goldLight transition">
+                                    Call
+                                </a>
+                                <a href="https://wa.me/917353490980" target="_blank" rel="noopener noreferrer" onclick="return openExternalMap(event, 'https://wa.me/917353490980')" class="p-1.5 px-2.5 rounded-lg bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs transition" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <button type="button" onclick="copyTextWithToast('7353490980', 'Number 7353490980 copied! Ready to dial.')" class="p-1.5 px-2.5 rounded-lg bg-palace-emerald border border-palace-gold/40 text-palace-goldLight hover:bg-palace-gold hover:text-palace-deep text-xs transition" title="Copy Number">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- Floating Action Toast Notification for Copy / Dial / Map Actions -->
+    <div id="global-action-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3 rounded-full bg-palace-emerald border-2 border-palace-gold text-palace-goldLight text-xs sm:text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.85)] flex items-center space-x-2">
+        <i class="fas fa-check-circle text-palace-gold"></i>
+        <span id="global-action-toast-text">Copied to clipboard!</span>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT: GENTLE HARP CHIMES, 3D DOORS, QR CODES, BLESSINGS WALL
+         ===================================================================== -->
+    <script>
+        /* -------------------------------------------------------------------
+           0. RELIABLE EXTERNAL MAP, PHONE DIALER & CLIPBOARD HELPERS
+           ------------------------------------------------------------------- */
+        function showGlobalToast(message) {
+            const toast = document.getElementById('global-action-toast');
+            const textEl = document.getElementById('global-action-toast-text');
+            if (!toast || !textEl) return;
+            textEl.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        function copyTextWithToast(text, message) {
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showGlobalToast(message || 'Copied to clipboard!');
+            } catch (e) {
+                showGlobalToast('Number: ' + text);
+            }
+        }
+
+        function openExternalMap(event, url) {
+            if (event) event.stopPropagation();
+            try {
+                const newWin = window.open(url, '_blank', 'noopener,noreferrer');
+                if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+                    window.location.assign(url);
+                }
+            } catch (e) {
+                window.location.href = url;
+            }
+            return true;
+        }
+
+        function triggerPhoneCall(event, phoneUri) {
+            if (event) event.stopPropagation();
+            const rawNum = phoneUri.replace('+91', '');
+            copyTextWithToast(rawNum, 'Dialing ' + rawNum + ' (Number also copied!)');
+            try {
+                window.top.location.href = 'tel:' + phoneUri;
+            } catch (e) {
+                window.location.href = 'tel:' + phoneUri;
+            }
+        }
+
+        /* -------------------------------------------------------------------
+           1. GENTLE CRYSTAL HARP GLISSANDO SOUND (NO HARSH SYNTH DRONE)
+           ------------------------------------------------------------------- */
+        let audioCtx = null;
+        let isMuted = false;
+        let doorsOpened = false;
+        let ambientInterval = null;
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Plays a soft, warm, crystal-clear harp/celesta glissando chord
+        function playGentleHarpGlissando() {
+            if (isMuted) return;
+            try {
+                initAudioContext();
+                if (!audioCtx) return;
+
+                // Dreamy pentatonic harp notes (D5, F#5, A5, B5, D6, F#6)
+                const harpNotes = [587.33, 739.99, 880.00, 987.77, 1174.66, 1479.98];
+
+                harpNotes.forEach((freq, index) => {
+                    const startTime = audioCtx.currentTime + index * 0.11;
+                    const osc = audioCtx.createOscillator();
+                    const overtone = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    // Pure sine + soft triangle overtone for plucked harp warmth
+                    osc.type = 'sine';
+                    overtone.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, startTime);
+                    overtone.frequency.setValueAtTime(freq * 2, startTime);
+
+                    const overtoneGain = audioCtx.createGain();
+                    overtoneGain.gain.setValueAtTime(0.015, startTime);
+
+                    // Soft pluck envelope
+                    gain.gain.setValueAtTime(0.0001, startTime);
+                    gain.gain.linearRampToValueAtTime(0.065, startTime + 0.04);
+                    gain.gain.exponentialRampToValueAtTime(0.0005, startTime + 2.4);
+
+                    osc.connect(gain);
+                    overtone.connect(overtoneGain);
+                    overtoneGain.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start(startTime);
+                    overtone.start(startTime);
+                    osc.stop(startTime + 2.45);
+                    overtone.stop(startTime + 2.45);
+                });
+            } catch (err) {
+                // Ignore if browser blocks audio
+            }
+        }
+
+        // Plays a single soft celesta bell note for ambient sparkle
+        function playSoftBellNote(freq) {
+            if (isMuted || !audioCtx) return;
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.linearRampToValueAtTime(0.025, now + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.0003, now + 2.8);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 2.9);
+            } catch (e) {}
+        }
+
+        function startGentleAmbientChimes() {
+            if (ambientInterval) clearInterval(ambientInterval);
+            const gentleNotes = [587.33, 659.25, 739.99, 880.00, 987.77, 1174.66];
+            ambientInterval = setInterval(() => {
+                if (!isMuted && doorsOpened && document.visibilityState === 'visible') {
+                    const pick = gentleNotes[Math.floor(Math.random() * gentleNotes.length)];
+                    playSoftBellNote(pick);
+                }
+            }, 4200);
+        }
+
+        function toggleRoyalAudio() {
+            isMuted = !isMuted;
+            const icon = document.getElementById('audio-toggle-icon');
+            const text = document.getElementById('audio-toggle-text');
+            if (isMuted) {
+                icon.className = 'fas fa-volume-mute text-red-400';
+                text.textContent = 'Muted';
+            } else {
+                icon.className = 'fas fa-volume-up';
+                text.textContent = 'Sound On';
+                playGentleHarpGlissando();
+            }
+        }
+
+        /* -------------------------------------------------------------------
+           2. 3D PALACE DOORS OPEN & REPLAY LOGIC
+           ------------------------------------------------------------------- */
+        function openPalaceDoors() {
+            if (doorsOpened) return;
+            doorsOpened = true;
+
+            playGentleHarpGlissando();
+            startGentleAmbientChimes();
+            burstGoldConfetti();
+
+            const overlay = document.getElementById('door-scene-overlay');
+            overlay.classList.add('opening');
+            document.body.classList.remove('doors-locked');
+
+            setTimeout(() => {
+                overlay.classList.add('opened-hidden');
+            }, 1900);
+        }
+
+        /* Gold confetti burst when the palace doors open */
+        function burstGoldConfetti() {
+            const colors = ['#d4af37', '#fbe8a6', '#fdfaf3', '#8c6914'];
+            const count = 60;
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('div');
+                const size = Math.random() * 7 + 4;
+                piece.style.cssText = `
+                    position: fixed;
+                    top: -5vh;
+                    left: ${Math.random() * 100}vw;
+                    width: ${size}px;
+                    height: ${size * 0.4}px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    opacity: ${Math.random() * 0.5 + 0.5};
+                    z-index: 10000;
+                    pointer-events: none;
+                    border-radius: 2px;
+                    transform: rotate(${Math.random() * 360}deg);
+                `;
+                document.body.appendChild(piece);
+                const duration = Math.random() * 1800 + 2200;
+                const drift = (Math.random() - 0.5) * 220;
+                piece.animate([
+                    { transform: piece.style.transform, top: '-5vh' },
+                    { transform: `translateX(${drift}px) rotate(${Math.random() * 720}deg)`, top: '105vh' }
+                ], { duration, easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' });
+                setTimeout(() => piece.remove(), duration + 50);
+            }
+        }
+
+        function shareInvitation() {
+            const shareData = {
+                title: "Ashpakali & Tahira's Wedding",
+                text: "You're invited to the Nikah & Valima of Ashpakali & Tahira! 🤲✨",
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                copyTextWithToast(window.location.href, 'Invitation link copied!');
+            }
+        }
+
+        function replayPalaceDoors() {
+            const overlay = document.getElementById('door-scene-overlay');
+            overlay.classList.remove('opened-hidden', 'opening');
+            document.body.classList.add('doors-locked');
+            doorsOpened = false;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('door-scene-overlay').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                openPalaceDoors();
+            }
+        });
+
+        /* -------------------------------------------------------------------
+           3. LIVE COUNTDOWN TO NIKAH (21 NOV 2026, 12:45 PM)
+           ------------------------------------------------------------------- */
+        const nikahTargetTime = new Date("November 21, 2026 12:45:00").getTime();
+
+        function updateCountdownTimer() {
+            const now = new Date().getTime();
+            const diff = nikahTargetTime - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = "00";
+                document.getElementById('cd-hours').textContent = "00";
+                document.getElementById('cd-mins').textContent = "00";
+                document.getElementById('cd-secs').textContent = "00";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+        }
+
+        /* -------------------------------------------------------------------
+           4. GENERATE SCANNABLE QR CODES FOR NIKAH & VALIMA VENUES
+           ------------------------------------------------------------------- */
+        function renderVenueQRCodes() {
+            const nikahUrl = "https://share.google/Q2lnQjRQZfQ4HuwBF";
+            const valimaUrl = "https://share.google/JvlYQfMulSFgQvgcu";
+
+            const nikahContainer = document.getElementById('qrcode-nikah');
+            const valimaContainer = document.getElementById('qrcode-valima');
+
+            if (window.QRCode && nikahContainer && valimaContainer) {
+                nikahContainer.innerHTML = "";
+                valimaContainer.innerHTML = "";
+                new QRCode(nikahContainer, {
+                    text: nikahUrl,
+                    width: 165,
+                    height: 165,
+                    colorDark: "#071f16",
+                    colorLight: "#fbf6e9",
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+                new QRCode(valimaContainer, {
+                    text: valimaUrl,
+                    width: 165,
+                    height: 165,
+                    colorDark: "#071f16",
+                    colorLight: "#fbf6e9",
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            }
+        }
+
+        /* -------------------------------------------------------------------
+           5. DUAS, BLESSINGS & FEEDBACK WALL LOGIC
+           ------------------------------------------------------------------- */
+        const initialBlessings = [
+            {
+                name: "Makandar & Otigeri Family",
+                tag: "Barakallahu Lakuma 🤲",
+                message: "Alhamdulillah! May Allah (SWT) shower His choicest blessings upon Ashpakali & Tahira and fill their new home with peace, love, and barakah.",
+                time: "Pinned Family Blessing"
+            },
+            {
+                name: "Mulla Family (Dharwad)",
+                tag: "Endless Love & Barakah 💖",
+                message: "Heartiest congratulations to our beloved children Ashpakali and Tahira. May your bond grow stronger in faith and happiness every single day.",
+                time: "Pinned Family Blessing"
+            },
+            {
+                name: "Bilal Masjid Jamat & Friends",
+                tag: "Insha Allah Attending 🕌",
+                message: "Mabrook to Mr. Hajaratsab Makandar and the entire family! Looking forward to joining the Nikah in Dharwad and Valima in Bailhongal.",
+                time: "Warm Wishes"
+            }
+        ];
+
+        let blessingsData = [];
+
+        /* Couple-only moderation: change this passcode to whatever you like */
+        const ADMIN_PASSCODE = 'Tahira20198191';
+        let adminUnlocked = false;
+
+        function toggleAdminManage() {
+            if (adminUnlocked) {
+                adminUnlocked = false;
+                renderBlessingsWall();
+                return;
+            }
+            const entered = prompt('Enter the couple-only passcode to manage duas:');
+            if (entered === ADMIN_PASSCODE) {
+                adminUnlocked = true;
+                renderBlessingsWall();
+            } else if (entered !== null) {
+                alert('Incorrect passcode.');
+            }
+        }
+
+        function deleteBlessing(index) {
+            if (!adminUnlocked) return;
+            if (!confirm('Remove this dua from the wall? This cannot be undone.')) return;
+            blessingsData.splice(index, 1);
+            try {
+                localStorage.setItem('makandar_ashapakali_tahira_duas', JSON.stringify(blessingsData));
+            } catch (err) {}
+            renderBlessingsWall();
+        }
+
+        function loadBlessingsWall() {
+            try {
+                const stored = localStorage.getItem('makandar_ashapakali_tahira_duas');
+                blessingsData = stored ? JSON.parse(stored) : [...initialBlessings];
+            } catch (e) {
+                blessingsData = [...initialBlessings];
+            }
+            renderBlessingsWall();
+        }
+
+        function renderBlessingsWall() {
+            const listEl = document.getElementById('blessings-list');
+            const badgeEl = document.getElementById('blessing-badge-count');
+            const manageBtn = document.getElementById('admin-manage-btn');
+            if (!listEl) return;
+
+            if (manageBtn) {
+                manageBtn.innerHTML = adminUnlocked
+                    ? '<i class="fas fa-lock-open mr-1"></i>Managing — tap to lock'
+                    : '<i class="fas fa-lock mr-1"></i>Manage';
+            }
+
+            badgeEl.textContent = `${blessingsData.length} ${blessingsData.length === 1 ? 'Dua' : 'Duas'}`;
+            listEl.innerHTML = '';
+
+            blessingsData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = "p-4 sm:p-5 rounded-2xl bg-palace-deep/85 border border-palace-gold/30 shadow-md";
+                card.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <h4 class="font-serif font-bold text-lg text-palace-goldLight flex items-center gap-2">
+                            <i class="fas fa-star-and-crescent text-palace-gold text-xs"></i>
+                            <span>${escapeHtml(item.name)}</span>
+                        </h4>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-0.5 rounded-full bg-palace-gold/15 border border-palace-gold/40 text-palace-goldLight text-xs font-medium">
+                                ${escapeHtml(item.tag)}
+                            </span>
+                            ${adminUnlocked ? `<button onclick="deleteBlessing(${index})" class="w-7 h-7 rounded-full bg-red-900/40 border border-red-400/50 text-red-200 hover:bg-red-700/60 text-xs" title="Delete this dua"><i class="fas fa-trash"></i></button>` : ''}
+                        </div>
+                    </div>
+                    <p class="font-serif text-base sm:text-lg text-palace-ivory/95 leading-relaxed italic">
+                        "${escapeHtml(item.message)}"
+                    </p>
+                    <p class="text-[11px] text-palace-sand/60 mt-2 text-right">${escapeHtml(item.time || 'Just now')}</p>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function submitGuestBlessing(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('blessing-name');
+            const tagInput = document.getElementById('blessing-tag');
+            const msgInput = document.getElementById('blessing-message');
+
+            const name = nameInput.value.trim();
+            const tag = tagInput.value;
+            const message = msgInput.value.trim();
+            if (!name || !message) return;
+
+            blessingsData.unshift({
+                name,
+                tag,
+                message,
+                time: "Just now"
+            });
+
+            try {
+                localStorage.setItem('makandar_ashapakali_tahira_duas', JSON.stringify(blessingsData));
+            } catch (err) {}
+
+            renderBlessingsWall();
+            playGentleHarpGlissando();
+
+            nameInput.value = '';
+            msgInput.value = '';
+
+            const toast = document.getElementById('blessing-toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
+
+        /* -------------------------------------------------------------------
+           6. FLOATING GOLD DUST PARTICLES
+           ------------------------------------------------------------------- */
+        function initGoldDustParticles() {
+            const canvas = document.getElementById('gold-dust-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            for (let i = 0; i < 42; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.8 + 0.6,
+                    vy: -(Math.random() * 0.35 + 0.12),
+                    vx: (Math.random() - 0.5) * 0.25,
+                    alpha: Math.random() * 0.55 + 0.15
+                });
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    if (p.y < -10) p.y = canvas.height + 10;
+                    if (p.x < -10) p.x = canvas.width + 10;
+                    if (p.x > canvas.width + 10) p.x = -10;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(251, 232, 166, ${p.alpha})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(drawParticles);
+            }
+            drawParticles();
+        }
+
+        /* -------------------------------------------------------------------
+           INITIALIZE ON WINDOW LOAD
+           ------------------------------------------------------------------- */
+        window.onload = function() {
+            updateCountdownTimer();
+            setInterval(updateCountdownTimer, 1000);
+            renderVenueQRCodes();
+            loadBlessingsWall();
+            initGoldDustParticles();
+        };
+    </script>
+</body>
+</html>
