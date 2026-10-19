@@ -514,6 +514,265 @@
         }
     </style>
 </head>
+<body class="doors-locked arabesque-bg font-sans selection:b            inset -4px 0 12px rgba(255, 215, 120, 0.2);
+        }
+
+        /* 3D Door Edge Thickness */
+        .palace-door-left::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -18px;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(180deg, #3a200e, #1d0e05, #472812);
+            transform: rotateY(90deg);
+            transform-origin: left center;
+        }
+        .palace-door-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -18px;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(180deg, #3a200e, #1d0e05, #472812);
+            transform: rotateY(-90deg);
+            transform-origin: right center;
+        }
+
+        /* Triggered 3D Open State */
+        #door-scene-overlay.opening .palace-door-left {
+            transform: rotateY(-115deg);
+            box-shadow: 35px 0 70px rgba(0,0,0,0.85);
+        }
+        #door-scene-overlay.opening .palace-door-right {
+            transform: rotateY(115deg);
+            box-shadow: -35px 0 70px rgba(0,0,0,0.85);
+        }
+
+        /* Recessed Carved Wooden Panels inside each Door */
+        .door-carved-panel {
+            position: relative;
+            width: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(76, 38, 15, 0.68) 0%, rgba(20, 8, 2, 0.95) 100%);
+            border: 3px solid #96722f;
+            outline: 2px solid #1a0b03;
+            box-shadow: 
+                inset 0 6px 18px rgba(0,0,0,0.95),
+                inset 0 -3px 10px rgba(212, 175, 55, 0.28),
+                0 3px 6px rgba(0,0,0,0.85),
+                0 0 0 5px #231006,
+                0 0 0 7px rgba(196, 153, 67, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .panel-arch-top {
+            height: 28%;
+            border-radius: 140px 140px 6px 6px;
+        }
+        .panel-middle-main {
+            height: 41%;
+            border-radius: 8px;
+        }
+        .panel-bottom-base {
+            height: 22%;
+            border-radius: 6px;
+        }
+
+        /* Metallic Brass Stud Strips */
+        .brass-stud-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2px 4px;
+            height: 16px;
+        }
+        .brass-stud {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 30%, #fff8d6 0%, #e0b64c 35%, #8a6214 75%, #2b1b03 100%);
+            box-shadow: 
+                0 3px 5px rgba(0,0,0,0.9),
+                inset 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* Realistic 3D Sculpted Gold Ring Knockers */
+        .knocker-assembly {
+            position: absolute;
+            top: 51%;
+            z-index: 25;
+            width: 64px;
+            height: 88px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateZ(14px);
+            filter: drop-shadow(0 12px 10px rgba(0,0,0,0.85));
+        }
+        .knocker-left { right: 10%; }
+        .knocker-right { left: 10%; }
+        .knocker-backplate {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: conic-gradient(from 45deg, #6e4e11, #f3d27a, #8a6418, #fff1ba, #704f10, #d4a843, #6e4e11);
+            border: 2px solid #fffae0;
+            box-shadow: 
+                inset 0 0 10px rgba(0,0,0,0.8),
+                0 4px 10px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .knocker-pivot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #ffd86b 45%, #75510c 90%);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+        }
+        .knocker-ring {
+            margin-top: -11px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            background: 
+                linear-gradient(#2c1609, #2c1609) padding-box,
+                linear-gradient(145deg, #fff5c0 0%, #d4af37 35%, #6b4c0e 70%, #f5d77f 100%) border-box;
+            box-shadow: 
+                0 10px 14px rgba(0,0,0,0.85),
+                inset 0 3px 6px rgba(0,0,0,0.75);
+            animation: knockerGleam 2.8s infinite ease-in-out;
+            transform-origin: top center;
+        }
+        @keyframes knockerGleam {
+            0%, 100% {
+                transform: rotateX(0deg);
+                filter: drop-shadow(0 0 6px rgba(255, 215, 90, 0.4));
+            }
+            50% {
+                transform: rotateX(14deg);
+                filter: drop-shadow(0 0 18px rgba(255, 225, 120, 0.95));
+            }
+        }
+
+        /* =========================================================
+           2. CLASSIC ROYAL EMERALD, GOLD & PARCHMENT STYLING
+           ========================================================= */
+        .arabesque-bg {
+            background-color: #03120b;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 62%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.6' stroke-opacity='0.11'%3E%3Cpath d='M40 0L50 30L80 40L50 50L40 80L30 50L0 40L30 30Z'/%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3Cpath d='M0 0L20 20M80 0L60 20M0 80L20 60M80 80L60 60'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Shimmering Gold Foil Text */
+        .gold-foil-text {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #d4af37 50%, #fbf5b7 75%, #9b6c15 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: foilShine 6s linear infinite;
+        }
+        @keyframes foilShine {
+            to { background-position: 200% center; }
+        }
+
+        /* Deep Emerald & Gold Royal Card */
+        .gold-border-card {
+            background: linear-gradient(160deg, rgba(8, 41, 27, 0.94) 0%, rgba(3, 18, 11, 0.98) 100%);
+            border: 1.5px solid rgba(212, 175, 55, 0.45);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.75),
+                inset 0 0 28px rgba(212, 175, 55, 0.07);
+        }
+
+        /* Dark Royal Emerald & Liquid Gold Palace Mihrab Invitation Card (No White!) */
+        .emerald-royal-mihrab-card {
+            background: 
+                radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.20) 0%, transparent 55%),
+                radial-gradient(circle at 50% 82%, rgba(212, 175, 55, 0.14) 0%, transparent 55%),
+                linear-gradient(165deg, #072a1e 0%, #041b12 48%, #02100a 100%);
+            color: #fdfaf3;
+            border: 2.5px solid #d4af37;
+            box-shadow: 
+                0 28px 75px rgba(0, 0, 0, 0.92),
+                0 0 0 6px #03120b,
+                0 0 0 8px rgba(212, 175, 55, 0.55),
+                inset 0 0 55px rgba(212, 175, 55, 0.12);
+            position: relative;
+        }
+        .emerald-royal-mihrab-card::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(251, 232, 166, 0.32);
+            border-radius: 18px;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='0.5' stroke-opacity='0.08'%3E%3Cpolygon points='50,5 62,38 95,50 62,62 50,95 38,62 5,50 38,38'/%3E%3Ccircle cx='50' cy='50' r='24'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Majestic Royal Capital Name Typography */
+        .royal-couple-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(180deg, #fff9d6 0%, #fbe8a6 30%, #d4af37 65%, #9e7313 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.32));
+        }
+        .royal-drop-cap {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-style: normal;
+            display: inline-block;
+            background: linear-gradient(135deg, #fffbe0 0%, #fbe8a6 35%, #d4af37 70%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 3px 10px rgba(212, 175, 55, 0.5));
+        }
+
+        /* Rotating Mandala Ring in Monogram */
+        .spin-slow {
+            animation: spinMandala 28s linear infinite;
+            transform-origin: center;
+        }
+        @keyframes spinMandala {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Gold Dust Canvas */
+        #gold-dust-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+        }
+
+        /* Custom Scrollbar for Blessings Wall */
+        .blessings-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .blessings-scroll::-webkit-scrollbar-track {
+            background: rgba(3, 18, 11, 0.6);
+            border-radius: 8px;
+        }
+        .blessings-scroll::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+        }
+    </style>
+</head>
 <body class="doors-locked arabesque-bg font-sans selection:bg-palace-gold selection:text-palace-deep">
 
     <!-- =====================================================================
