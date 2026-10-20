@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This site is already designed dark: ask browsers NOT to apply their forced/auto dark mode -->
+    <meta name="color-scheme" content="dark">
+    <meta name="supported-color-schemes" content="dark">
+    <meta name="darkreader-lock">
+    <meta name="theme-color" content="#03120b">
     <title>Makandar Family Wedding Invitation | Ashpakali & Tahira</title>
     
     <!-- Tailwind CSS -->
@@ -799,6 +804,8 @@
         @keyframes ameenPop { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
         .dua-new { animation: duaIn .8s cubic-bezier(.22,1,.36,1); }
         @keyframes duaIn { from { opacity: 0; transform: translateY(-10px) scale(.98); } to { opacity: 1; transform: none; } }
+        :root { color-scheme: dark; }
+        html, body { background-color: #03120b; }
     </style>
 </head>
 <body class="doors-locked arabesque-bg font-sans selection:bg-palace-gold selection:text-palace-deep">
